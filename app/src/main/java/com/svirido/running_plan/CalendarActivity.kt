@@ -24,13 +24,13 @@ class CalendarActivity : AppCompatActivity() {
             listTheDate.add(theDate)
         }
 
-        binding.button1.setOnClickListener {
-            binding.textView1.text = listTheDate[0].dayOfMonth.toString()
-        }
+//        binding.button1.setOnClickListener {
+//            binding.textView1.text = listTheDate[0].dayOfMonth.toString()
+//        }
 
-        binding.button2.setOnClickListener {
-            binding.textView2.text = listTheDate[1].dayOfMonth.toString()
-        }
+//        binding.button2.setOnClickListener {
+//            binding.textView2.text = listTheDate[1].dayOfMonth.toString()
+//        }
 
 
 
