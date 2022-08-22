@@ -5,6 +5,8 @@ import android.os.Bundle
 import android.util.Log
 import com.svirido.running_plan.databinding.ActivityCalendarBinding
 
+var listTheDate = arrayListOf<TheDate>()
+
 class CalendarActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityCalendarBinding
@@ -15,7 +17,6 @@ class CalendarActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         var theDate: TheDate
-        val listTheDate = arrayListOf<TheDate>()
 
         binding.calendarView.setOnDateChangeListener { calendarView, year, month, dayOfMonth ->
             Log.d("calendar", " $year  $month  $dayOfMonth")
