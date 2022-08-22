@@ -18,5 +18,12 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, CalendarActivity::class.java)
             startActivity(intent)
         }
+
+        binding.buttonWorkout.setOnClickListener {
+            val intent = Intent(this, WorkoutActivity::class.java)
+            startActivity(intent)
+        }
+
+
     }
 }
