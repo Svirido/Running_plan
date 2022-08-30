@@ -1,5 +1,14 @@
 package com.svirido.running_plan.base
 
-class Workout (val type: String, val date: String ,val dayWeek: String, val train: String) {
+class Workout(
+    var id: Int?,
+    var type: String,
+    var date: String,
+    var dayWeek: String,
+    var train: String,
+    var description: String,
+    var report: String,
+) {
+
 
 }

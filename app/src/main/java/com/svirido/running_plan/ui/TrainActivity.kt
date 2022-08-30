@@ -3,13 +3,12 @@ package com.svirido.running_plan.ui
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.svirido.running_plan.R
-import com.svirido.running_plan.WorkoutAdapter
 import com.svirido.running_plan.adapter.TrainAdapter
 import com.svirido.running_plan.base.Workout
+import com.svirido.running_plan.data.DataBaseHandler
 import com.svirido.running_plan.databinding.ActivityTrainBinding
 
-var listTrain = arrayListOf<Workout>()
+var listTrain = arrayListOf<Workout>() // todo
 
 class TrainActivity : AppCompatActivity() {
 
@@ -30,21 +29,21 @@ class TrainActivity : AppCompatActivity() {
         val relax = "relax"
         val rLong = "rLong"
 
-        val train22082022 = Workout(easy,"22.08.2022" ,"Monday", "12 km.")
-        val train23082022 = Workout(job, "23.08.2022" ,"Tuesday", "6 по 1 000 через 400")
-        val train24082022 = Workout(easy, "24.08.2022" ,"Wednesday", "12 km.")
-        val train25082022 = Workout(easy,"25.08.2022" ,"Thursday", "16 km.")
-        val train26082022 = Workout(job,"26.08.2022" ,"Friday", "8 по 1 000 через 400")
-        val train27082022 = Workout(rLong,"27.08.2022" ,"Saturday", "25 km.")
-        val train28082022 = Workout(relax,"28.08.2022" ,"Sunday", "Relaxation")
+        val train30082022 = Workout(null, job, "30.08.2022", "Tuesday", "5-3-2-1 / 800", "", "")
+        val train31082022 = Workout(null, easy, "31.08.2022", "Wednesday", "20 km.", "", "")
+        val train01092022 = Workout(null, easy, "01.09.2022", "Thursday", "20 km.", "", "")
+        val train02092022 = Workout(null, job, "02.09.2022", "Friday", "Temp 12 km.", "", "")
+        val train03092022 = Workout(null, easy, "03.09.2022", "Saturday", "22 km.", "", "")
+        val train04092022 = Workout(null, rLong, "04.09.2022", "Sunday", "35 km", "", "")
 
-        listTrain.add(train22082022)
-        listTrain.add(train23082022)
-        listTrain.add(train24082022)
-        listTrain.add(train25082022)
-        listTrain.add(train26082022)
-        listTrain.add(train27082022)
-        listTrain.add(train28082022)
+        val dataBaseHandler = DataBaseHandler(this)
+        dataBaseHandler.addTrain(train30082022)
+        dataBaseHandler.addTrain(train31082022)
+        dataBaseHandler.addTrain(train01092022)
+        dataBaseHandler.addTrain(train02092022)
+        dataBaseHandler.addTrain(train03092022)
+        dataBaseHandler.addTrain(train04092022)
 
+        listTrain = dataBaseHandler.getAllTrain() as ArrayList<Workout>
     }
 }
