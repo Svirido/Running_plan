@@ -6,4 +6,75 @@
     android:layout_height="match_parent"
     tools:context=".ui.AddTrainActivity">
 
+    <EditText
+        android:id="@+id/dateEditTextText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:ems="10"
+        android:hint="date"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="@+id/typeSpinner"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/typeSpinner"
+        app:layout_constraintTop_toBottomOf="@+id/typeSpinner" />
+
+    <EditText
+        android:id="@+id/dayWeekEditTextText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:ems="10"
+        android:hint="dayWeek"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="@+id/dateEditTextText"
+        app:layout_constraintStart_toStartOf="@+id/dateEditTextText"
+        app:layout_constraintTop_toBottomOf="@+id/dateEditTextText" />
+
+    <EditText
+        android:id="@+id/trainEditTextText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:ems="10"
+        android:hint="train"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="@+id/dayWeekEditTextText"
+        app:layout_constraintStart_toStartOf="@+id/dayWeekEditTextText"
+        app:layout_constraintTop_toBottomOf="@+id/dayWeekEditTextText" />
+
+    <EditText
+        android:id="@+id/descriptionEditTextText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:ems="10"
+        android:hint="description"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="@+id/trainEditTextText"
+        app:layout_constraintStart_toStartOf="@+id/trainEditTextText"
+        app:layout_constraintTop_toBottomOf="@+id/trainEditTextText" />
+
+    <Button
+        android:id="@+id/addOneTrainButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Add Train"
+        app:layout_constraintEnd_toEndOf="@+id/descriptionEditTextText"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/descriptionEditTextText"
+        app:layout_constraintTop_toBottomOf="@+id/descriptionEditTextText" />
+
+    <Spinner
+        android:id="@+id/typeSpinner"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="48dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textColor="@android:color/white"
+        android:textSize="11dp"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

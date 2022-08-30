@@ -14,7 +14,7 @@
         android:theme="@style/Theme.Running_plan"
         tools:targetApi="31">
         <activity
-            android:name=".AddTrainActivity"
+            android:name=".ui.AddTrainActivity"
             android:exported="false" />
         <activity
             android:name=".ui.GoalActivity"
