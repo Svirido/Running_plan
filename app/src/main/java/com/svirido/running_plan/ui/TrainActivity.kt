@@ -18,7 +18,7 @@ class TrainActivity : AppCompatActivity() {
 
     private var adapter = TrainAdapter()
 
-    val dataBaseHandler = DataBaseHandler(this)
+    private val dataBaseHandler = DataBaseHandler(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,13 +33,11 @@ class TrainActivity : AppCompatActivity() {
         val relax = "relax"
         val rLong = "rLong"
 
-        val train31082022 = Workout(null, easy, "31.08.2022", "Wednesday", "20 km.", "", "")
         val train01092022 = Workout(null, easy, "01.09.2022", "Thursday", "20 km.", "", "")
         val train02092022 = Workout(null, job, "02.09.2022", "Friday", "Temp 12 km.", "", "")
         val train03092022 = Workout(null, easy, "03.09.2022", "Saturday", "22 km.", "", "")
         val train04092022 = Workout(null, rLong, "04.09.2022", "Sunday", "35 km", "", "")
 
-        dataBaseHandler.addTrain(train31082022)
         dataBaseHandler.addTrain(train01092022)
         dataBaseHandler.addTrain(train02092022)
         dataBaseHandler.addTrain(train03092022)
