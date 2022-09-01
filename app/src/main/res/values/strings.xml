@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Running_plan</string>
+    <string name="running_plan">Running plan</string>
+    <string name="_1_500_km">1 500 km.</string>
 </resources>
