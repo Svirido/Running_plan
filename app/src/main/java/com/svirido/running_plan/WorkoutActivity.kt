@@ -19,6 +19,5 @@ class WorkoutActivity : AppCompatActivity() {
         binding.recylcerView.layoutManager = LinearLayoutManager(this)
         binding.recylcerView.adapter = adapter
 
-
     }
 }
