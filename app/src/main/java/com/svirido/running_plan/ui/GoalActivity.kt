@@ -1,12 +1,19 @@
 package com.svirido.running_plan.ui
 
-import android.content.Context
-import android.content.SharedPreferences
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.svirido.running_plan.base.OneGoal
+import com.svirido.running_plan.data.GoalDataBaseHandler
 import com.svirido.running_plan.databinding.ActivityGoalBinding
+import kotlin.math.roundToInt
+
+var goalsList = arrayListOf<OneGoal>()
+var check = false
 
 class GoalActivity : AppCompatActivity() {
+
+    private val dataBaseHandler = GoalDataBaseHandler(this)
 
     lateinit var binding: ActivityGoalBinding
 
@@ -15,30 +22,50 @@ class GoalActivity : AppCompatActivity() {
         binding = ActivityGoalBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val sharedPreferencesResult = getSharedPreferences("goal", Context.MODE_PRIVATE)
-        val sharedPreferencesData = getSharedPreferences("data", Context.MODE_PRIVATE)
+        val august = OneGoal(null, "August", 88)
+        val september1and2 = OneGoal(null, "September_1_and_2", 11)
+        val noWatch = OneGoal(null, "no watch", 36)
 
-        val goal = sharedPreferencesResult.getInt("goal", 0)
-        val data = sharedPreferencesData.getString("data", "00.00.00")
+        if (!check) {
+            dataBaseHandler.addGoal(august)
+            dataBaseHandler.addGoal(september1and2)
+            dataBaseHandler.addGoal(noWatch)
+            check = true
+        }
 
-        binding.resultTextView.text = goal.toString()
-        binding.dataTextView.text = data.toString()
+        findDistance()
+        findInterest()
 
         binding.updateButton.setOnClickListener {
-            val result = binding.resultEditTextText.text.toString().toInt()
-            val prefEditor: SharedPreferences.Editor = sharedPreferencesResult.edit()
-            val newGoal = goal + result
-            prefEditor.putInt("goal", newGoal)
-            prefEditor.apply()
-
             val data = binding.dataeEditTextText.text.toString()
-            val prefEditorData: SharedPreferences.Editor = sharedPreferencesData.edit()
-            prefEditorData.putString("data", data)
-            prefEditorData.apply()
+            val result = binding.resultEditTextText.text.toString().toInt()
+            val oneGoal = OneGoal(null, data, result)
+            dataBaseHandler.addGoal(oneGoal)
+            findDistance()
+            findInterest()
+        }
 
-            binding.resultTextView.text = sharedPreferencesResult.getInt("goal", 0).toString()
-            binding.dataTextView.text = data
-
+        binding.watchRecordsButton.setOnClickListener {
+            val intent = Intent(this, RecordsActivity::class.java)
+            startActivity(intent)
         }
     }
+
+    private fun findDistance(): Int {
+        var result = 0
+        goalsList = dataBaseHandler.getAllOneGoal() as ArrayList<OneGoal>
+        for (i in goalsList) {
+            result += i.distance
+        }
+        binding.resultTextView.text = result.toString()
+        return result
+    }
+
+    private fun findInterest() {
+        var interest = (findDistance() / 1500.0) * 100.0
+        interest = (interest * 10).roundToInt() / 10.0
+        binding.interestTextView.text = "$interest %"
+
+    }
+
 }

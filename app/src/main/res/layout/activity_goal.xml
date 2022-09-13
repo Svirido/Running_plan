@@ -8,40 +8,31 @@
 
     <TextView
         android:id="@+id/resultTextView"
-        android:layout_width="150dp"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="56dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="104dp"
+        android:maxLength="5"
+        android:maxLines="1"
         android:text="Goal"
         android:textColor="@color/white"
         android:textSize="34sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.243"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/dataTextView"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="Data"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="@+id/resultTextView"
-        app:layout_constraintStart_toStartOf="@+id/resultTextView"
-        app:layout_constraintTop_toBottomOf="@+id/resultTextView" />
 
     <EditText
         android:id="@+id/resultEditTextText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="64dp"
         android:ems="10"
         android:hint="result"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dataTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/resultTextView" />
 
     <EditText
         android:id="@+id/dataeEditTextText"
@@ -68,12 +59,24 @@
         app:layout_constraintTop_toBottomOf="@+id/dataeEditTextText" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/interestTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
+        android:text=""
+        android:textColor="@color/design_default_color_error"
+        android:textSize="34sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/resultTextView"
+        app:layout_constraintTop_toTopOf="@+id/resultTextView" />
+
+    <Button
+        android:id="@+id/watchRecordsButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:text="август = 88 km."
-        app:layout_constraintStart_toStartOf="parent"
+        android:text="Watch records"
+        app:layout_constraintEnd_toEndOf="@+id/updateButton"
+        app:layout_constraintStart_toStartOf="@+id/updateButton"
         app:layout_constraintTop_toBottomOf="@+id/updateButton" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
