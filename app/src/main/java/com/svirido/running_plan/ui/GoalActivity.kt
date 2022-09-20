@@ -1,6 +1,8 @@
 package com.svirido.running_plan.ui
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.svirido.running_plan.base.OneGoal
@@ -9,7 +11,6 @@ import com.svirido.running_plan.databinding.ActivityGoalBinding
 import kotlin.math.roundToInt
 
 var goalsList = arrayListOf<OneGoal>()
-var check = false
 
 class GoalActivity : AppCompatActivity() {
 
@@ -22,15 +23,21 @@ class GoalActivity : AppCompatActivity() {
         binding = ActivityGoalBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val august = OneGoal(null, "August", 88)
-        val september1and2 = OneGoal(null, "September_1_and_2", 11)
-        val noWatch = OneGoal(null, "no watch", 36)
+        var sharedPreference: SharedPreferences? = null
+        sharedPreference = getSharedPreferences("Key", Context.MODE_PRIVATE)
+
+        val check: Boolean = sharedPreference.getBoolean("Key", false)
+        val editor = sharedPreference.edit()
 
         if (!check) {
+            val august = OneGoal(null, "August", 88)
+            val september1and2 = OneGoal(null, "September_1_and_2", 11)
+            val noWatch = OneGoal(null, "no watch", 36)
             dataBaseHandler.addGoal(august)
             dataBaseHandler.addGoal(september1and2)
             dataBaseHandler.addGoal(noWatch)
-            check = true
+            editor.putBoolean("Key", true)
+            editor.commit()
         }
 
         findDistance()
